@@ -277,7 +277,7 @@ namespace jm
 
 		if (draw_grid) {
 			setLineWidth(1);
-			jm::drawGrid(Colors::gray, 0.5f); //Note: Game2D::drawGrid() vs jm::drawGrid(...)
+			jm::drawGrid(Colors::black, 0.5f); //Note: Game2D::drawGrid() vs jm::drawGrid(...)
 		}
 	}
 }

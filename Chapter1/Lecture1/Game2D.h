@@ -26,6 +26,7 @@ namespace jm
 		int width = 640;
 		int height = 480;
 
+		// 화면에 뜬 창에 대한 포인터
 		GLFWwindow* glfw_window = nullptr;
 
 		Timer timer;
