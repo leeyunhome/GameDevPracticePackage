@@ -36,7 +36,7 @@ namespace jm
 		// control options
 		std::map<int, bool> key_status;  // key_id, is_pressed
 		std::map<int, bool> mbtn_status; // mouse_button_id, is_pressed
-		bool draw_grid = false;
+		bool draw_grid = true;
 
 	public:
 		Game2D()
