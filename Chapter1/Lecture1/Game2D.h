@@ -31,7 +31,7 @@ namespace jm
 
 		Timer timer;
 
-		float spf = 1.0f / 60.0f;		 // second(s) per frame
+		float spf = 1.0f / 1440.0f;		 // second(s) per frame
 
 		// control options
 		std::map<int, bool> key_status;  // key_id, is_pressed
