@@ -7,6 +7,7 @@ namespace jm
 	class Circle : public GeometricObject
 	{
 	public:
+		float time = 0.0f;
 		float size;
 
 		void init(const RGB& _color, const vec2& _pos, const float& _size)
@@ -17,9 +18,11 @@ namespace jm
 			size = _size;
 		}
 
-		void drawGeometry() const override
+		void drawGeometry() override
 		{
+			rotate_geometry(time, -50.0f);
 			drawFilledCircle(color, size);
+			time += this->getTimeStep();
 		}
 	};
 }
