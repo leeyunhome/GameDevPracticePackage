@@ -4,12 +4,11 @@
 
 namespace jm
 {
-	class GeometricObject : public Game2D
+	class GeometricObject
 	{
 	public:
 		vec2 pos;
 		RGB color;
-		float time = 0.0f;
 		/*float size;
 		float width, height;*/
 
@@ -19,15 +18,10 @@ namespace jm
 			pos = _pos;
 		}
 
-		virtual void drawGeometry()  = 0;
+		virtual void drawGeometry() const = 0;
 		//{
 		//	// XXXX
 		//}
-
-		void rotate_geometry(float time, const float& angle) const
-		{
-			rotate(time * angle);
-		}
 
 		void draw()
 		{
