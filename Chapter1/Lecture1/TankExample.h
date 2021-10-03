@@ -8,7 +8,7 @@ namespace jm
 	{
 	public:
 		vec2 center = vec2(0.0f, 0.0f);
-		//vec2 direction = vec2(1.0f, 0.0f, 0.0f);
+		//vec2 direction = vec2(1.0f, 0.0f, 0.0f); // 탱크가 회전할 때 이용
 
 		void draw()
 		{
@@ -30,6 +30,18 @@ namespace jm
 	public:
 		vec2 center = vec2(0.0f, 0.0f);
 		vec2 velocity = vec2(0.0f, 0.0f);
+
+		MyBullet()
+		{
+			std::cout << __FUNCTION__ << " " << __LINE__ << std::endl;
+		}
+
+		~MyBullet()
+		{
+			std::cout << __FUNCTION__ << " " << __LINE__ << std::endl;
+			//if (this != nullptr)
+			//delete this;
+		}
 
 		void draw()
 		{
@@ -62,6 +74,7 @@ namespace jm
 
 		~TankExample()
 		{
+			std::cout << __FUNCTION__ << " " << __LINE__ << std::endl;
 			if(bullet != nullptr) delete bullet;
 		}
 
@@ -76,18 +89,31 @@ namespace jm
 			// shoot a cannon ball
 			if (isKeyPressedAndReleased(GLFW_KEY_SPACE))
 			{
-				bullet = new MyBullet;
+				if (NULL == bullet)
+				{
+					bullet = new MyBullet;
+				}
+
 				bullet->center = tank.center;
 				bullet->center.x += 0.2f;
 				bullet->center.y += 0.1f;
 				bullet->velocity = vec2(2.0f, 0.0f);
 			}
 
+			//std::cout << Game2D::getWidth() << std::endl;
+			int tempWidth = Game2D::getWidth();
+
 			if (bullet != nullptr) bullet->update(getTimeStep());
 
 			// rendering
 			tank.draw();
 			if (bullet != nullptr) bullet->draw();
+
+			//if (bullet != nullptr && (int)bullet->center.x == 1)
+			//{
+			//	std::cout << bullet->center.x << std::endl;
+			//	delete bullet;
+			//}
 		}
 	};
 }

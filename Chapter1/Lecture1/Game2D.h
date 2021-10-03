@@ -62,6 +62,11 @@ namespace jm
 
 		vec2 getCursorPos(const bool& screen_coordinates = true);
 
+		int getWidth() const
+		{
+			return width;
+		}
+
 		float getTimeStep();
 
 		void drawGrid();

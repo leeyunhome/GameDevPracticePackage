@@ -10,13 +10,25 @@ namespace jm
 	- make a Person class and use it to draw many people.
 	- make an Ironman and allow for him to shoot repulsor beam with his right hand
 	*/
+	class Earth
+	{
+	public:
+		void draw()
+		{
+			// earth
+			beginTransformation();
+			translate(0.0f, -0.8f);
+			drawFilledBox(Colors::gray, 2.0f, 0.1f);
+			endTransformation();
+		}
+	};
 
-	class WalkingPerson : public Game2D
+	class Person
 	{
 		float time = 0.0f;
 
 	public:
-		void update() override
+		void draw(float time)
 		{
 			// gold face
 			beginTransformation();
@@ -27,6 +39,23 @@ namespace jm
 
 			endTransformation();
 
+			// yellow left arm
+			beginTransformation();
+			rotate(sin(time * 5.0f) * -30.0f);					// animation!
+			scale(1.0f, 2.0f);
+			translate(0.0f, -0.1f);
+			drawFilledBox(Colors::yellow, 0.05f, 0.18f);
+			endTransformation();
+
+			// green left leg
+			beginTransformation();
+			translate(0.0f, -0.6f);
+			translate(0.0f, 0.2f);
+			rotate(sinf(time * 5.0f + 3.141592f) * -30.0f);	// animation!
+			translate(0.0f, -0.2f);
+			drawFilledBox(Colors::green, 0.1f, 0.4f);
+			endTransformation();
+
 			// red body
 			beginTransformation();
 			scale(1.0f, 2.0f);
@@ -34,22 +63,63 @@ namespace jm
 			drawFilledBox(Colors::red, 0.13f, 0.2f);
 			endTransformation();
 
-			// yellow arm
+			// yellow right arm
 			beginTransformation();
-			rotate(sin(time*5.0f) * 30.0f);					// animation!
+			rotate(sin(time * 5.0f) * 30.0f);					// animation!
 			scale(1.0f, 2.0f);
 			translate(0.0f, -0.1f);
 			drawFilledBox(Colors::yellow, 0.05f, 0.18f);
 			endTransformation();
 
-			// green leg
+
+
+			// green right leg
 			beginTransformation();
 			translate(0.0f, -0.6f);
 			translate(0.0f, 0.2f);
-			rotate(sinf(time*5.0f + 3.141592f) * 30.0f);	// animation!
+			rotate(sinf(time * 5.0f + 3.141592f) * 30.0f);	// animation!
 			translate(0.0f, -0.2f);
 			drawFilledBox(Colors::green, 0.1f, 0.4f);
 			endTransformation();
+
+			//time += this->getTimeStep();
+		}
+		
+	};
+
+	class WalkingPerson : public Game2D
+	{
+		Person person;
+		Earth earth;
+
+		float time = 0.0f;
+
+	public:
+		WalkingPerson()
+		{}
+		~WalkingPerson()
+		{}
+
+		void update() override
+		{
+			earth.draw();
+
+
+			if (isKeyPressedAndReleased(GLFW_KEY_SPACE)) translate(0.0f, 0.2f);
+
+
+			//if (isKeyPressed(GLFW_KEY_SPACE))
+			//{
+			//};
+
+			//person.draw(time);
+			/*translate(0.25f, 0.25f);
+			person.draw(time);
+			person.draw(time);
+			translate(0.25f, 0.0f);
+			person.draw(time);*/
+			translate(0.25f, 0.0f);
+			person.draw(time);
 
 			time += this->getTimeStep();
 		}

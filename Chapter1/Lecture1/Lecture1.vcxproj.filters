@@ -71,5 +71,8 @@
     <ClInclude Include="GundamExample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WalkingPersonExample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
