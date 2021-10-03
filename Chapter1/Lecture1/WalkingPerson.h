@@ -105,7 +105,7 @@ namespace jm
 			earth.draw();
 
 
-			if (isKeyPressedAndReleased(GLFW_KEY_SPACE)) translate(0.0f, 0.2f);
+			if (isKeyPressed(GLFW_KEY_SPACE)) translate(0.0f, 0.2f);
 
 
 			//if (isKeyPressed(GLFW_KEY_SPACE))
